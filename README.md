@@ -1,3 +1,19 @@
+<div align="center">
+
+  <img src="https://cdn-icons-png.flaticon.com/512/3074/3074931.png" alt="Smart Irrigation Logo" width="150" />
+  
+  <h1>Smart Irrigation System (IoT Edition)</h1>
+  
+  <p><b>An automated, solar-powered agricultural model that monitors soil moisture and pulls live weather data to water crops intelligently.</b></p>
+  
+  <p>🏆 <i>1st Place Winner for Working Model at Christ Junior College Cosmos v10.0 (CS Dept)</i></p>
+</div>
+
+---
+> [!CAUTION]
+> **License Notice**
+> This project is officially licensed under the **GNU General Public License v3.0 (GPLv3)**. This ensures the hardware architecture and software logic remain free and open-source. Anyone is free to use or modify this project, but any derivative works must also be open-source. See the `LICENSE` file for full details.
+
 # Smart-Irrigation-Automated-IoT
 1st Place winner for Working Model at Christ Junior College Cosmos v10.0 (Computer Science Dept). An IoT irrigation system that automates water delivery using ESP8266 hardware, soil moisture sensors, and live OpenWeatherMap data.
 # 🌿 Smart Irrigation System (IoT Edition)
