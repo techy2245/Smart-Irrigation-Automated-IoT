@@ -20,7 +20,51 @@ This repository contains the hardware architecture and software logic for our aw
 - TP4056 Battery Charger & MT3608 Voltage Booster
 
 ## 🔌 Circuit & Wiring Schematic
-*(Drag and drop your wiring diagram photo here)*
+**1. Power Supply Connections ☀️🔋**
+| Component     | Pin / Wire | Connected To       | Purpose                  |
+| ------------- | ---------- | ------------------ | ------------------------ |
+| Solar Panel   | `+`        | TP4056 `IN+`       | Solar power input        |
+| Solar Panel   | `−`        | TP4056 `IN−`       | Solar ground             |
+| 18650 Battery | `+`        | TP4056 `B+`        | Battery charging         |
+| 18650 Battery | `−`        | TP4056 `B−`        | Battery charging return  |
+| TP4056        | `OUT+`     | MT3608 `VIN+`      | Battery power to booster |
+| TP4056        | `OUT−`     | MT3608 `VIN−`      | Ground to booster        |
+| MT3608        | `VOUT+`    | ESP8266 `VIN / 5V` | Regulated 5V supply      |
+| MT3608        | `VOUT−`    | ESP8266 `GND`      | Ground                   |
+
+**2. ESP8266 & Soil Moisture Sensor 🌱**
+| Soil Moisture Sensor | ESP8266 | Purpose                 |
+| -------------------- | ------- | ----------------------- |
+| `VCC`                | `3.3V`  | Sensor power            |
+| `GND`                | `GND`   | Common ground           |
+| `A0`                 | `A0`    | Analog moisture reading |
+
+**3. Pump Control Circuit 💧**
+| Component     | Pin / Wire              | Connected To           | Purpose             |
+| ------------- | ----------------------- | ---------------------- | ------------------- |
+| ESP8266       | `D1`                    | 1 kΩ resistor          | Pump control signal |
+| 1 kΩ resistor | Other end               | TIP122 `Base (B)`      | Limits base current |
+| Pump          | `−`                     | TIP122 `Collector (C)` | Current switching   |
+| TIP122        | `Emitter (E)`           | Common `GND`           | Current return      |
+| Pump          | `+`                     | Pump supply `+`        | Pump power          |
+| Diode         | Cathode / silver stripe | Pump `+`               | Flyback protection  |
+| Diode         | Anode                   | Pump `−`               | Flyback protection  |
+
+ESP8266 D1
+    ↓
+  1 kΩ
+    ↓
+TIP122 Base
+    │
+    ├── Collector ← Pump −
+    │
+    └── Emitter → GND
+
+Pump + → Pump Supply +
+
+Diode:
+Silver stripe → Pump +
+Other side    → Pump −
 
 ## 💻 Software Installation
 1. Install the **Arduino IDE** and add the ESP8266 board manager.
@@ -38,4 +82,4 @@ This repository contains the hardware architecture and software logic for our aw
 We are actively developing our next major update, which will replace the basic weather API with **Predictive Machine Learning AI**. The future system will analyze historical weather patterns, soil evaporation rates, and crop types to predict exact irrigation times, creating a fully autonomous, data-driven farming ecosystem.
 
 ## 📜 License
-This project is dual-licensed. You may choose to use it under the terms of the **MIT License** OR the **GNU General Public License v3.0 (GPLv3)**. See the `LICENSE-MIT` and `LICENSE-GPL` files in this repository for full details.
+This project is dual-licensed. You may choose to use it under the terms of the **GNU General Public License v3.0 (GPLv3)**. See the `LICENSE-GPL` files in this repository for full details.
