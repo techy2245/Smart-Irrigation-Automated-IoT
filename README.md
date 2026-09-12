@@ -82,4 +82,4 @@ Other side    → Pump −
 We are actively developing our next major update, which will replace the basic weather API with **Predictive Machine Learning AI**. The future system will analyze historical weather patterns, soil evaporation rates, and crop types to predict exact irrigation times, creating a fully autonomous, data-driven farming ecosystem.
 
 ## 📜 License
-This project is dual-licensed. You may choose to use it under the terms of the **GNU General Public License v3.0 (GPLv3)**. See the `LICENSE-GPL` files in this repository for full details.
+This project is licensed. You may choose to use it under the terms of the **GNU General Public License v3.0 (GPLv3)**. See the `LICENSE` files in this repository for full details.
